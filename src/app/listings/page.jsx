@@ -30,6 +30,12 @@ export default function AllListings() {
 
   const [filteredListings, setFilteredListings] = useState(dummyListings)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentPath, setCurrentPath] = useState("")
+
+  // Get current path for active menu detection
+  useEffect(() => {
+    setCurrentPath(window.location.pathname)
+  }, [])
 
   // Apply filters whenever they change
   useEffect(() => {
@@ -144,7 +150,7 @@ export default function AllListings() {
 
       <div className="flex-1 overflow-y-auto">
         {/* Header */}
-        <header className="sticky top-0 z-10 bg-black border-b border-gray-800 px-4 py-3 !flex items-center justify-between">
+        <header className="sticky top-0 z-10 bg-black border-b border-gray-800 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Mobile menu toggle */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -158,16 +164,42 @@ export default function AllListings() {
                   <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl w-fit">BX</div>
                 </div>
                 <nav className="flex flex-col p-4 border-b border-gray-800">
-                  <Link href="/" className="py-3 px-2 hover:bg-gray-900 rounded-md">
+                  <Link
+                    href="/"
+                    className={`px-7 py-3 rounded-[30px] transition-colors ${
+                      currentPath === "/" ? "bg-[#c1ff00] text-black" : "bg-[#0d151b] text-white hover:bg-gray-900"
+                    }`}
+                  >
                     Home
                   </Link>
-                  <Link href="/listings" className="py-3 px-2 bg-gray-900 rounded-md my-1">
+                  <Link
+                    href="/listings"
+                    className={`py-3 px-2 rounded-md my-1 transition-colors ${
+                      currentPath === "/listings" || currentPath.includes("/listings")
+                        ? "bg-[#c1ff00] text-black"
+                        : "bg-black text-white hover:bg-gray-900"
+                    }`}
+                  >
                     All Listings
                   </Link>
-                  <Link href="/how-to-buy" className="py-3 px-2 hover:bg-gray-900 rounded-md my-1">
+                  <Link
+                    href="/how-to-buy"
+                    className={`py-3 px-2 rounded-md my-1 transition-colors ${
+                      currentPath === "/how-to-buy"
+                        ? "bg-[#c1ff00] text-black"
+                        : "bg-black text-white hover:bg-gray-900"
+                    }`}
+                  >
                     How To Buy
                   </Link>
-                  <Link href="/how-to-sell" className="py-3 px-2 hover:bg-gray-900 rounded-md">
+                  <Link
+                    href="/how-to-sell"
+                    className={`py-3 px-2 rounded-md transition-colors ${
+                      currentPath === "/how-to-sell"
+                        ? "bg-[#c1ff00] text-black"
+                        : "bg-black text-white hover:bg-gray-900"
+                    }`}
+                  >
                     How To Sell
                   </Link>
                 </nav>
@@ -188,17 +220,45 @@ export default function AllListings() {
             </Link>
 
             {/* Desktop navigation */}
-            <nav className="hidden md:flex items-center gap-6 ml-5">
-              <Link href="/" className="text-sm hover:text-[#c1ff00]">
+            <nav className="hidden md:flex items-center gap-6 ml-5 font-lufga">
+              <Link
+                href="/"
+                className={`text-base font-normal px-4 py-1 rounded-full transition-colors ${
+                  currentPath === "/"
+                    ? "bg-[#c1ff00] text-black font-medium"
+                    : "bg-black text-white hover:text-[#c1ff00]"
+                }`}
+              >
                 Home
               </Link>
-              <Link href="/listings" className="text-sm bg-[#c1ff00] text-black px-4 py-1 rounded-full font-medium">
+              <Link
+                href="/listings"
+                className={`text-base px-4 py-1 rounded-full transition-colors ${
+                  currentPath === "/listings" || currentPath.includes("/listings")
+                    ? "bg-[#c1ff00] text-black font-medium"
+                    : "bg-black text-white hover:text-[#c1ff00]"
+                }`}
+              >
                 All Listings
               </Link>
-              <Link href="/how-to-buy" className="text-sm hover:text-[#c1ff00]">
+              <Link
+                href="/how-to-buy"
+                className={`text-base px-4 py-1 rounded-full transition-colors ${
+                  currentPath === "/how-to-buy"
+                    ? "bg-[#c1ff00] text-black font-medium"
+                    : "bg-black text-white hover:text-[#c1ff00]"
+                }`}
+              >
                 How To Buy
               </Link>
-              <Link href="/how-to-sell" className="text-sm hover:text-[#c1ff00]">
+              <Link
+                href="/how-to-sell"
+                className={`text-base px-4 py-1 rounded-full transition-colors ${
+                  currentPath === "/how-to-sell"
+                    ? "bg-[#c1ff00] text-black font-medium"
+                    : "bg-black text-white hover:text-[#c1ff00]"
+                }`}
+              >
                 How To Sell
               </Link>
             </nav>

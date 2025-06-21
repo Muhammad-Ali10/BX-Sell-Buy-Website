@@ -1,12 +1,12 @@
-import "./globals.css"
-import { Sora } from "next/font/google"
+import { Sora } from 'next/font/google';
+import './globals.css';
 
 const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-})
+  subsets: ['latin'],
+  variable: '--font-sora',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: "EX - Buy & Sell Companies",
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sora.className} font-sora`} suppressHydrationWarning>
+      <body className={sora.variable} suppressHydrationWarning>
         <main>{children}</main>
       </body>
     </html>

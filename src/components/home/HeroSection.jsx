@@ -65,17 +65,17 @@ export default function HeroSection() {
         </div>
       </header>
       <section className="mx-auto px-4 pt-16 text-center mt-12">
-        <h1 className="text-4xl md:!text-[85px] font-sora font-medium text-white mb-4">
+        <h1 className="text-[40px] md:!text-[85px] font-lufga font-medium text-white mb-4">
           Buy & Sell Companies
           <br />
           in 3 simple Steps
         </h1>
-        <p className="text-white/90 text-xl max-w-3xl mx-auto my-8">
+        <p className="text-white/90 text-sm md:text-xl font-lufga font-normal max-w-3xl mx-auto my-8">
           Join the #1 platform for buying & selling companies. Discover, connect, and exchange with ease—your journey
           starts here today!
         </p>
 
-        <div className="flex flex-wrap justify-center text-base gap-6 mb-12">
+        <div className="flex flex-wrap justify-center text-sm  md:text-base font-lufga font-normal gap-4 md:gap-6 mb-12">
           <div className="flex items-center gap-2 text-white">
             <div className="w-2 h-2 bg-white rounded-full"></div>
             <span>Secure Payments with EXPay</span>
@@ -90,42 +90,42 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="bg-blue-500/50 p-2 rounded-lg max-w-4xl mx-auto mb-12 px-12 py-6">
-          <div className="flex flex-col md:flex-row gap-2">
-            <Select className="text-white h-16">
-              <SelectTrigger className="w-full max-w-2xl bg-blue-400/30 border-none text-white h-16">
-                <div className="flex items-center gap-2 text-white h-16">
+        <div className="bg-blue-500/50 p-2 rounded-lg max-w-4xl mx-auto mb-12 px-6 md:px-12 py-6">
+          <div className="flex flex-row gap-2">
+            <Select className="text-white !h-10 ">
+              <SelectTrigger className="w-full max-w-2xl bg-blue-400/30 border-none text-white md:h-16 sm:h-10 ">
+                <div className="flex items-center gap-2 text-white text-base font-lufga font-normal h-10 md:h-16">
                   <Layers className="text-white" />
-                  <SelectValue placeholder="What are you Looking For?" />
+                  <SelectValue placeholder="What are you Looking For?" className="text-base font-lufga font-normal" />
                 </div>
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className=" text-base font-lufga font-normal ">
                 <SelectItem value="ecommerce">E-Commerce</SelectItem>
                 <SelectItem value="saas">SaaS</SelectItem>
                 <SelectItem value="content">Content</SelectItem>
               </SelectContent>
             </Select>
-            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900  w-16 h-16">
+            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 w-10 h-10  md:w-16 md:h-16">
               <SlidersHorizontal className="h-5 w-5" />
             </Button>
-            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 w-16 h-16">
+            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900  w-10 h-10  md:w-16 md:h-16">
               <Search className="h-5 w-5" />
             </Button>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 ">
+        <div className="hidden  lg:flex flex-wrap  justify-center items-center gap-4 font-lufga">
           <div className="text-white/80 mr-4">Trending Topics</div>
-          <Badge variant="outline" className="bg-blue-500/30 text-white border-none hover:bg-blue-500/50">
+          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             Shopify <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white border-none hover:bg-blue-500/50">
+          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             E-Commerce <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white border-none hover:bg-blue-500/50">
+          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             YouTube Automation <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white border-none hover:bg-blue-500/50">
+          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             SaaS <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
         </div>
@@ -134,8 +134,8 @@ export default function HeroSection() {
         <div className="max-w-[1920px]">
           <Image src="/hero.png"
             width={1920}
-            height={588} 
-            alt="Hero Image"/>
+            height={588}
+            alt="Hero Image" />
         </div>
       </section>
     </main>

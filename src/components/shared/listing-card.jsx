@@ -32,120 +32,78 @@ export default function ListingCard({ listing, featured = false }) {
       return `$${amount}`
     }
   }
-
+console.log(listing)
   return (
-    <Card className="max-w-sm w-full bg-[#FAFAFA] text-white p-2 border-0 shadow-none">
-
-      <div className="relative">
-        <div className="relative h-[200px] w-full bg-[#E1E1E1] rounded-2xl ">
-          <Image
-            src={listing.image || "/placeholder.svg?height=200&width=400&query=business"}
-            alt={listing.title}
-            fill
-            className="object-cover "
-          />
-
-          {/* Niche badge */}
-          <Badge className="absolute bottom-3 left-3 z-10 bg-gray-800/70 text-white">{listing.niche}</Badge>
-
-          {/* Action buttons */}
-          <div className="absolute right-3 top-3 z-10 flex gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70"
-              onClick={toggleFavorite}
-            >
-              <Heart className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : ""}`} />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70"
-              onClick={handleShare}
-            >
-              <Share2 className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Off-market progress bar for featured listings */}
-        {featured && (
-          <>
-            <div className="h-1 w-full bg-gray-800">
-              <div className="h-full w-3/4 bg-[#c1ff00]"></div>
+            <div className="rounded-lg max-w-[371px] overflow-hidden">
+              <div className="relative">
+                <Image
+                  src={listing.image}
+                  width={400}
+                  height={285}
+                  alt={listing.title}
+                  className="w-full object-cover"
+                />
+                <button className="absolute top-3 right-3 bg-white p-3 w-[49px] h-[48px] height rounded-full">
+                  <Image src={"/Vector.png"}
+                    width={20}
+                    height={20} className="m-auto"
+                    alt="like" />
+                </button>
+                <button className="absolute top-3 right-20 bg-white p-3 w-[49px] h-[48px] height rounded-full">
+                  <Image src={"/Frame.png"}
+                    width={20}
+                    height={20}
+                    alt="share" className="m-auto" />
+                </button>
+                <div className="absolute bottom-3 left-3 flex space-x-2">
+                  <div className="bg-black/25 text-xs  md:!text-base  font-medium font-lufga px-3 py-1 text-white rounded-full">{listing.niche}</div>
+                </div>
+              </div>
+              <div className="p-4"> 
+                <h3 className="text-lg md:!text-base font-semibold font-lufga mb-1 text-black">{listing.title}</h3>
+                <p className="text-xs text-black/50 mb-3 font-lufga">{listing.description}</p>
+                <div className="flex flex-row justify-between items-center mb-4">
+                     <div className="text-[24px] md:!text-[22px] font-semibold font-lufga text-black">${listing.price.toLocaleString()}</div>
+                     <div className="flex flex-row justify-center items-center border-[2px] border-[#808080] px-3  rounded-[60px]">
+                      <p className=" text-[10px] md:text-xs font-medium font-lufga pr-2.5 py-1 text-black/70">Multiple 1.1x Profit</p>
+                      <hr className="inline-block h-full min-h-[1.9em] w-0.5 self-stretch bg-[#808080] "/>
+                      <p className="text-[10px] md:text-xs font-medium font-lufga pl-2.5 py-1 text-black/70">0.3x Revenue</p>
+                     </div>
+                </div>
+  
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-5 h-4 flex items-center justify-center">
+                      <Image src={"/flage.png"}
+                      width={32}
+                      height={23}
+                      alt="Button-Icon"
+                    />
+                    </div>
+                    <span className="text-sm md:text-base font-medium text-black/50 font-lufga">Location: <span className="text-black">{listing.location}</span></span>
+                  </div>
+                  <div className="text-sm md:text-base font-medium text-black/50 font-lufga text-right">Business Age: <span className="text-black">{listing.businessAge}</span></div>
+  
+                  <div className="text-sm md:text-base font-medium text-black/50 font-lufga">Net Profit: <span className="text-black">{listing.netProfit}</span></div>
+                  <div className="text-sm md:text-base font-medium text-black/50 font-lufga text-right">Revenue: <span className="text-black">{listing.revenue}</span></div>
+                </div>
+  
+                <div className="flex gap-2">
+                  <Button
+  
+                    className="w-1/2 bg-black hover:bg-gray-800 text-sm md:text-base font-medium font-lufga text-white rounded-[60px]"
+                  >
+                    Contact Seller
+                  </Button>
+                  <Button
+  
+                    className="w-1/2 bg-[#AEF31F] hover:bg-[#AEF31F] text-sm md:text-base font-medium font-lufga text-black rounded-[60px]"
+                  >
+                    View Listing
+                  </Button>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-between bg-gray-800 px-3 py-1 text-xs">
-              <div>Off-Market</div>
-              <div>Goes Public</div>
-            </div>
-            <Badge className="absolute left-3 top-3 z-10 bg-[#c1ff00] text-black">Off-Market Ends in 21 days</Badge>
-          </>
-        )}
-      </div>
-
-      <CardHeader>
-        <h3 className="mb-1 text-lg font-medium text-black">{listing.title}</h3>
-        <p className="text-xs font-normal font-sora text-gray-700">{listing.description}</p>
-      </CardHeader>
-
-      <CardContent>
-        <div className="mb-3 flex items-center justify-between">
-          <div className="text-2xl font-bold text-black">${listing.price.toLocaleString()}</div>
-          <div className="flex gap-2">
-            <Badge variant="outline" className="border-gray-700 text-xs">
-              {listing.profitMultiple}x Profit
-            </Badge>
-            <Badge variant="outline" className="border-gray-700 text-xs">
-              {listing.revenueMultiple}x Revenue
-            </Badge>
-          </div>
-        </div>
-
-        <div className="mb-3 grid grid-cols-2 gap-2 text-black">
-          <div className="flex items-center gap-1 text-xs">
-            <span className="text-black">Location:</span>
-            <div className="flex items-center">
-              <span className="mr-1">
-                {listing.location === "United States" && "🇺🇸"}
-                {listing.location === "India" && "🇮🇳"}
-                {listing.location === "United Kingdom" && "🇬🇧"}
-                {listing.location === "Canada" && "🇨🇦"}
-                {listing.location === "Australia" && "🇦🇺"}
-                {listing.location === "Germany" && "🇩🇪"}
-                {listing.location === "France" && "🇫🇷"}
-                {listing.location === "Spain" && "🇪🇸"}
-                {listing.location === "Italy" && "🇮🇹"}
-              </span>
-              <span>{listing.location}</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-1 text-xs text-black">
-            <span className="text-black">Business Age:</span>
-            <span>
-              {listing.businessAge} {listing.businessAge === 1 ? "Year" : "Years"}
-            </span>
-          </div>
-        </div>
-
-        <div className="mb-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-black">
-          <div className="flex justify-between">
-            <span className="text-black">Net Profit:</span>
-            <span>{formatCurrency(listing.netProfit)}/y</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-black">Revenue:</span>
-            <span>{formatCurrency(listing.revenue)}/y</span>
-          </div>
-        </div>
-      </CardContent>
-
-      <CardFooter className="grid grid-cols-2 gap-3 p-4 pt-0">
-        <Button className="h-9 border-gray-700 text-xs rounded-2xl">
-          Contact Seller
-        </Button>
-        <Button className="h-9 bg-[#c1ff00] text-xs text-black hover:bg-[#a8e600] rounded-2xl">View Listing</Button>
-      </CardFooter>
-    </Card>
+        
   )
 }
