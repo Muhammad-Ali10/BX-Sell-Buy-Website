@@ -81,7 +81,7 @@ export default function EXWorksSection() {
                 </div>
 
                 {/* Interact with Buyers Card */}
-                <div className="flex flex-col w-full h-full max-w-[524px] max-h-[436px] md:max-h-[553px]  bg-white flex justify-center items-center rounded-xl shadow-2xl p-3 gap-6">
+                <div className="flex flex-col w-full h-full max-w-[524px] max-h-[436px] md:max-h-[553px]  bg-white  justify-center items-center rounded-xl shadow-2xl p-3 gap-6">
                   <div className="bg-[#F5F5F5] rounded-2xl w-full h-full	max-w-[492px] flex justify-center items-center  max-h-[305px] md:max-h-[387px]">
                     <div className="bg-white rounded-md w-full h-full max-w-[314px]  flex flex-col justify-center max-h-[230px] md:max-h-[292px] gap-5 px-8">
                       {Array(4).fill(null).map((_, index) =>
@@ -108,7 +108,7 @@ export default function EXWorksSection() {
                 </div>
 
                 {/* Seal the Deal Card */}
-                <div className="flex flex-col gap-8 w-full h-full max-w-[524px] h-[539.6px]">
+                <div className="flex flex-col gap-8 w-full  max-w-[524px] h-[539.6px]">
                   <div className="bg-[#F5F5F5] rounded-2xl w-full max-w-[524px] h-[395px] flex flex-col gap-4 justify-center items-center p-5">
                     <div className="flex flex-row items-center w-[309px]">
                       <div className="w-7 h-7 rounded-full border-2 bg-white border-[#C9C9C9]"></div>
@@ -136,7 +136,7 @@ export default function EXWorksSection() {
                             width={18}
                             height={18}
                             alt="checkbox" />
-                          <span className="font-sora text-[10.41] font-normal text-black">{itemName}</span>
+                          <span className="font-sora font-normal text-black">{itemName}</span>
                         </div>
 
                       )}
@@ -164,16 +164,16 @@ export default function EXWorksSection() {
                             height={15.62}
                             alt="Search" />
                         </div>
-                        <Input id="search" type="search" placeholder="What are you looking for!" className="w-full  rounded-lg bg-background font-sora font-normal text-[10.41] text-black pl-8 py-2.5 h-10" />
+                        <Input id="search" type="search" placeholder="What are you looking for!" className="w-full  rounded-lg bg-background font-sora font-normal  text-black pl-8 py-2.5 h-10" />
                       </div>
                       {businessName.map((itemName, index) =>
-                        <div className="flex items-center gap-3 h-10">
+                        <div key={`business-${index}` } className="flex items-center gap-3 h-10">
                           <Image src="/box.png"
                             width={26.03}
                             height={26.03}
                             alt="box"
                           />
-                          <span className="font-sora text-[10.41] font-normal text-black">{itemName}</span>
+                          <span className="font-sora  font-normal text-black">{itemName}</span>
                         </div>
                       )}
 
@@ -189,7 +189,7 @@ export default function EXWorksSection() {
                 </div>
 
                 {/* Interact with Buyers Card */}
-                <div className="flex flex-col w-full h-full max-w-[524px] h-[553px]  bg-white flex justify-center items-center rounded-xl shadow-2xl p-3 gap-6">
+                <div className=" flex-col w-full   max-w-[524px] h-[553px]  bg-white flex justify-center items-center rounded-xl shadow-2xl p-3 gap-6">
                   <div className="bg-[#F5F5F5] rounded-2xl w-full h-full	max-w-[492px] flex justify-center items-center  max-h-[387px]">
                     <div className="bg-white rounded-md w-full h-full max-w-[314px]  flex flex-col justify-center max-h-[292px] gap-5 px-8">
                       {Array(4).fill(null).map((index) =>
@@ -216,7 +216,7 @@ export default function EXWorksSection() {
                 </div>
 
                 {/* Seal the Deal Card */}
-                <div className="flex flex-col gap-8 w-full h-full max-w-[524px] h-[539.6px]">
+                <div className="flex flex-col gap-8 w-full  max-w-[524px] h-[539.6px]">
                   <div className="bg-[#F5F5F5] rounded-2xl w-full max-w-[524px] h-[395px] flex flex-col gap-4 justify-center items-center">
                     <div className="flex flex-row items-center w-[309px]">
                       <div className="w-7 h-7 rounded-full border-2 bg-white border-[#C9C9C9]"></div>
@@ -244,7 +244,7 @@ export default function EXWorksSection() {
                             width={14.62}
                             height={14.62}
                             alt="checkbox" />
-                          <span className="font-sora text-[10.41] font-normal text-black">{itemName}</span>
+                          <span className="font-sora  font-normal text-black">{itemName}</span>
                         </div>
 
                       )}
@@ -266,8 +266,10 @@ export default function EXWorksSection() {
       </section>
 
       {/* Dark Section */}
-      <section className="w-full max-w-[1939px] md:h-[1142px] bg-black text-white py-24 px-4">
-        <div className="max-w-[1455px]  mx-auto">
+      <section className=" w-full md:max-h-[1142px] h-full bg-[#0D0D0D] text-white py-24 ">
+        
+
+        <div className="max-w-[1939px] md:h-[1142px] p-9 w-full rounded-xl  mx-auto">
           <div className="flex flex-col w-full gap-12 md:gap-24">
             <div>
               <h2 className="text-[28px] md:text-7xl font-normal font-lufga mb-4 md:mb-8 text-white/70">EX -Secure, Simple, Seamless</h2>
@@ -281,6 +283,7 @@ export default function EXWorksSection() {
             </div>
           </div>
         </div>
+       
       </section>
     </main>
   )

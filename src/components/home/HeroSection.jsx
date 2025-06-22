@@ -25,8 +25,9 @@ export default function HeroSection() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2">
-              <div className="bg-yellow-300 p-2 rounded-lg">
-                <span className="font-bold text-blue-600 text-xl">BX</span>
+              <div className="0 p-2 rounded-lg">
+                {/* <span className="font-bold text-blue-600 text-xl">B 123X</span> */}
+                <Image src={"/logo.png"} height={60} width={60} alt={"image"} />
               </div>
             </Link>
           </div>
@@ -37,7 +38,7 @@ export default function HeroSection() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-4 py-2 rounded-full font-medium transition-colors ${isActive ? "bg-yellow-300 text-blue-900" : "text-white hover:bg-blue-500"
+                  className={`px-4 py-2 rounded-full bg-[#FFFFFF0D] font-medium transition-colors ${isActive ? "bg-[var(--primary-button)] text-black" : "text-white hover:bg-blue-500"
                     }`}
                 >
                   {item.label}
@@ -48,18 +49,18 @@ export default function HeroSection() {
 
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="relative text-white">
-              <Heart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-yellow-300 text-xs text-blue-900 rounded-full w-4 h-4 flex items-center justify-center font-bold">
+            <Button variant="" size="icon" className="relative hover:bg-blue-500 bg-[#FFFFFF0D] rounded-full text-white">
+              <Heart className="h-[52px] w-[52px]" />
+              <span className="absolute -top-1 -right-1 bg-[var(--primary-button)] text-xs text-blue-900 rounded-full w-4 h-4 flex items-center justify-center font-bold">
                 3
               </span>
             </Button>
-            <Button variant="ghost" size="icon" className="text-white">
-              <User className="h-5 w-5" />
+            <Button variant="" size="icon" className="bg-[#FFFFFF0D] hover:bg-blue-500 rounded-full  text-white">
+              <User className="h-[52px] w-[52px]" />
             </Button>
-            <Button className="bg-white text-blue-600 hover:bg-gray-100">
-              <span className="hidden sm:inline">Add Listing</span>
-              <span className="sm:hidden">+</span>
+            <Button className="bg-white cursor-pointer  text-blue-600 hover:bg-gray-100">
+              <span className="sm:hidden md:block text-[1.5rem] text-black">+</span>
+              <span className="hidden sm:inline text-black">Add Listing</span>
             </Button>
           </div>
         </div>
@@ -105,33 +106,33 @@ export default function HeroSection() {
                 <SelectItem value="content">Content</SelectItem>
               </SelectContent>
             </Select>
-            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 w-10 h-10  md:w-16 md:h-16">
+            <Button className="bg-[#FAFAFA0D] hover:bg-[var(--primary-button)] border-[1px] border-[#FFFFFF1A] text-white hover:text-black w-10 h-10  md:w-16 md:h-16">
               <SlidersHorizontal className="h-5 w-5" />
             </Button>
-            <Button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900  w-10 h-10  md:w-16 md:h-16">
+            <Button className="bg-[var(--primary-button)] hover:bg-[var(--primary-button)]  text-black  w-10 h-10  md:w-16 md:h-16">
               <Search className="h-5 w-5" />
             </Button>
           </div>
         </div>
 
         <div className="hidden  lg:flex flex-wrap  justify-center items-center gap-4 font-lufga">
-          <div className="text-white/80 mr-4">Trending Topics</div>
-          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
+          <div className="text-white/80 mr-4 cursor-pointer">Trending Topics</div>
+          <Badge variant="outline" className=" bg-[#FFFFFF1A] text-white cursor-pointer !text-base font-normal  border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             Shopify <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
+          <Badge variant="outline" className="bg-[#FFFFFF1A] cursor-pointer text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             E-Commerce <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
+          <Badge variant="outline" className="bg-[#FFFFFF1A] cursor-pointer text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             YouTube Automation <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
-          <Badge variant="outline" className="bg-blue-500/30 text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
+          <Badge variant="outline" className="bg-[#FFFFFF1A] cursor-pointer text-white !text-base font-normal border-none rounded-3xl hover:bg-blue-500/50 px-5 py-2">
             SaaS <ArrowUpRight className="ml-1 h-3 w-3" />
           </Badge>
         </div>
       </section>
       <section className="flex">
-        <div className="max-w-[1920px]">
+        <div className="max-w-[1920px] mx-auto">
           <Image src="/hero.png"
             width={1920}
             height={588}

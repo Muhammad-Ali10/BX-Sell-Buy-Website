@@ -65,8 +65,8 @@ module.exports = {
       },
       fontFamily: {
         sora: ['var(--font-sora)', ...fontFamily.sans],
-
-        lufga: ['var(--font-lufga)', ...fontFamily.sans],
+        lufga: ['Lufga', 'sans-serif'],
+        // 'lufga': ['var(--font-lufga)', ...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",

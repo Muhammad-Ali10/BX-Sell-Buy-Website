@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-
+import Image from "next/image"
 export default function Footer() {
   return (
     <footer className="bg-black text-white py-12 px-6 md:px-12">
@@ -12,7 +12,8 @@ export default function Footer() {
           {/* Logo and description */}
           <div className="space-y-6">
             <div className="w-16 h-16 bg-[#c1ff00] flex items-center justify-center rounded-md">
-              <span className="text-black font-bold text-2xl">EX</span>
+              {/* <span className="text-black font-bold text-2xl">EX</span> */}
+              <Image src={"/logo.png"} height={60} width={60} alt={"footer-logo"}/>
             </div>
 
             <p className="text-sm text-gray-300 leading-relaxed">
@@ -21,12 +22,13 @@ export default function Footer() {
             </p>
 
             <div className="flex space-x-3">
-              <div className="w-10 h-6 bg-[#1434CB] rounded"></div>
+              {/* <div className="w-10 h-6 bg-[#1434CB] rounded"></div>
               <div className="w-10 h-6 bg-white rounded flex items-center justify-center">
                 <span className="text-[#1434CB] text-xs font-bold">VISA</span>
               </div>
               <div className="w-10 h-6 bg-[#ff5f00] rounded"></div>
-              <div className="w-10 h-6 bg-[#0070E0] rounded"></div>
+              <div className="w-10 h-6 bg-[#0070E0] rounded"></div> */}
+              <Image src={"/payment-logo.png"} width={165} height={22} alt={"visa"} />
             </div>
           </div>
 
