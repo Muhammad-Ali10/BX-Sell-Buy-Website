@@ -85,6 +85,7 @@ const Slider = React.forwardRef(({ className, showTooltip = false, tooltipConten
         <SliderPrimitive.Range
           className="absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full" />
       </SliderPrimitive.Track>
+      
       {internalValue?.map((value, index) => (
         <React.Fragment key={index}>{renderThumb(value)}</React.Fragment>
       ))}

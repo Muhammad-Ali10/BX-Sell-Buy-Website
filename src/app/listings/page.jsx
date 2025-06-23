@@ -23,6 +23,7 @@ export default function AllListings() {
     priceRange: [500, 5000],
     location: "",
     targetCountry: "",
+    targetMinRevenue: 50,
     ageRange: [0, 15],
     revenueRange: [0, 2000000],
     profitRange: [0, 1500000],
@@ -74,6 +75,11 @@ export default function AllListings() {
 
       // Target country filter
       if (filters.targetCountry && filters.targetCountry !== "all" && listing.targetCountry !== filters.targetCountry) {
+        return false
+      }
+
+      // Target country filter
+      if (filters.targetMinRevenue  < 0 && listing.targetCountry !== filters.targetCountry) {
         return false
       }
 
@@ -135,6 +141,7 @@ export default function AllListings() {
       priceRange: [500, 100000],
       location: "",
       targetCountry: "",
+      targetMinRevenue:0,
       ageRange: [0, 15],
       revenueRange: [0, 2000000],
       profitRange: [0, 1500000],
@@ -297,7 +304,7 @@ export default function AllListings() {
         {/* Main content */}
         <main className="flex flex-col p-4 md:p-6 bg-white">
           {/* Sell your store banner */}
-          <div className="bg-[#c1ff00] text-black rounded-xl p-6 mb-6 relative overflow-hidden">
+          <div className="bg-[linear-gradient(to_right,_#C4FC1E,_#D2FF4D)] text-black rounded-xl p-6 mb-6 relative overflow-hidden">
             <div className="max-w-[70%] z-10 relative">
               <h2 className="text-xl md:text-2xl font-bold mb-2">Looking to Sell Your Shopify Store?</h2>
               <p className="text-sm md:text-base mb-4">

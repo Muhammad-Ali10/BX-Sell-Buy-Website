@@ -23,8 +23,7 @@ import { PriceSlider2 } from "@/components/custom/price-slider";
 
 import Flag from "react-world-flags";
 import { getCountryCode } from "countries-list";
-
-
+import Link from "next/link";
 
 export default function FilterSidebar({
   filters,
@@ -34,14 +33,15 @@ export default function FilterSidebar({
 }) {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
-  
-
   const handleSearchChange = (e) => {
     onFilterChange({ search: e.target.value });
   };
 
   const handleNicheChange = (value) => {
     onFilterChange({ niche: value });
+  };
+  const handleTargetRevenueChange = (value) => {
+    onFilterChange({ targetMinRevenue: value });
   };
 
   const handleRevenueGeneratingChange = (value) => {
@@ -114,7 +114,7 @@ export default function FilterSidebar({
   };
 
   return (
-    <div className="p-4 h-full flex flex-col md:min-w-[24.3125em] w-full">
+    <div className="p-4 h-full flex flex-col md:min-w-[23.3125em] gap-[58px] w-full">
       {!mobile && (
         <div className="flex items-center mb-4">
           {/* <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl">BX</div> */}
@@ -273,23 +273,28 @@ export default function FilterSidebar({
                   </SelectItem>
                   <SelectItem value="India">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs"> <Flag
+                      <span className="text-xs">
+                        {" "}
+                        <Flag
                           code={getCountryCode("India")}
                           className="rounded-full h-[26px] w-[26px] object-cover"
-                        /></span>
+                        />
+                      </span>
                       <span>India</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="United Kingdom">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs"> <Flag
+                      <span className="text-xs">
+                        {" "}
+                        <Flag
                           code={getCountryCode("United Kingdom")}
                           className="rounded-full h-[26px] w-[26px] object-cover"
-                        /></span>
+                        />
+                      </span>
                       <span>United Kingdom</span>
                     </div>
                   </SelectItem>
-                 
                 </SelectContent>
               </Select>
             </div>
@@ -297,8 +302,8 @@ export default function FilterSidebar({
 
           {/* Advanced Filter */}
           <Collapsible open={isAdvancedOpen} onOpenChange={setIsAdvancedOpen}>
-            <CollapsibleTrigger className="flex items-center justify-between w-full text-sm font-medium">
-              Advanced Filter
+            <CollapsibleTrigger className="flex items-center justify-between w-full !text-[20px] font-[600]">
+              <span className=" leading-[140%]">Advanced Filter</span>
               <svg
                 className={`h-4 w-4 transition-transform ${
                   isAdvancedOpen ? "transform rotate-180" : ""
@@ -318,54 +323,93 @@ export default function FilterSidebar({
             </CollapsibleTrigger>
             <CollapsibleContent className="space-y-4 mt-4">
               {/* Target Country */}
-              <div>
-                <h4 className="text-sm mb-2">Target Country</h4>
+              <div className="bg-[#FFFFFF0D] p-[16px] rounded-[12px]">
+                <div className="flex justify-between leading-[150%] ">
+                  <h4 className="text-[16px] mb-2 leading-[150%]">
+                    Target Country
+                  </h4>
+                  <span className="text-[16px] leading-[150%]">
+                    min.{filters.targetMinRevenue}%
+                  </span>
+                </div>
+                <div className="my-4">
+                  <Slider
+                    defaultValue={[30]}
+                    value={[filters.targetMinRevenue]}
+                    min={0}
+                    max={100}
+                    orientation="horizontal"
+                    step={1}
+                    onValueChange={handleTargetRevenueChange}
+                  />
+                </div>
                 <Select
                   value={filters.targetCountry}
                   onValueChange={handleTargetCountryChange}
                 >
-                  <SelectTrigger className="bg-gray-900 border-gray-800 !text-white !h-10 w-full">
+                  <SelectTrigger className="bg-[#FFFFFF0D] border-none p-[16px] !text-white !h-10 w-full">
                     <SelectValue placeholder="Select country" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent
+                    className={
+                      "bg-[#18181A] text-[16px] text-white focus:!border-none !border-none !outline-none"
+                    }
+                  >
                     <SelectItem value="all">All Countries</SelectItem>
-                    <SelectItem value="United States">
+                    <SelectItem value={"United States"}>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs">🇺🇸</span>
+                        <span className="text-xs rounded-[22px]">
+                          <Flag
+                            code={getCountryCode("United States")}
+                            className="rounded-full h-[26px] w-[26px] object-cover"
+                          />
+                        </span>
                         <span>United States</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="Global">
+                    <SelectItem value="India">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs">🌎</span>
-                        <span>Global</span>
+                        <span className="text-xs">
+                          {" "}
+                          <Flag
+                            code={getCountryCode("India")}
+                            className="rounded-full h-[26px] w-[26px] object-cover"
+                          />
+                        </span>
+                        <span>India</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="Europe">
+                    <SelectItem value="United Kingdom">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs">🇪🇺</span>
-                        <span>Europe</span>
+                        <span className="text-xs">
+                          {" "}
+                          <Flag
+                            code={getCountryCode("United Kingdom")}
+                            className="rounded-full h-[26px] w-[26px] object-cover"
+                          />
+                        </span>
+                        <span>United Kingdom</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
                 </Select>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs">min: 50%</span>
+                {/* <div className="mt-2 flex items-center justify-between">
+                 
                   <div className="w-16 h-2 bg-gray-800 rounded-full overflow-hidden">
                     <div className="h-full bg-[#c1ff00] w-1/2"></div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Age */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Age</span>
-                  <span className="text-xs text-gray-500">
-                    {filters.ageRange[0]}y - {filters.ageRange[1]}y
+                <h4 className="text-sm mb-2 flex justify-between items-center">
+                  <span className="mr-2 text-[16px]">Age</span>
+                  <span className="text-[16px] text-white">
+                    {filters.ageRange[0]}y-{filters.ageRange[1]}y
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className="my-4">
                   <Slider
                     value={filters.ageRange}
                     min={0}
@@ -378,14 +422,23 @@ export default function FilterSidebar({
 
               {/* Monthly Revenue */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Monthly Revenue</span>
-                  <span className="text-xs text-gray-500">
+                <h4 className="text-sm mb-2 flex justify-between items-center">
+                 <div className="flex items-center gap-2">
+                    <Image
+                      src={"/dollar.png"}
+                      className="mb-1"
+                      height={20}
+                      width={20}
+                      alt="filter-logo"
+                    />
+                    <span className="mr-2 text-[16px]">Monthly Revenue</span>
+                  </div>
+                  <span className="text-[16px] text-white">
                     {formatCurrency(filters.revenueRange[0])} -{" "}
                     {formatCurrency(filters.revenueRange[1])}
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className=" my-4">
                   <Slider
                     value={filters.revenueRange}
                     min={0}
@@ -398,14 +451,23 @@ export default function FilterSidebar({
 
               {/* Monthly Profit */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Monthly Profit</span>
-                  <span className="text-xs text-gray-500">
-                    {formatCurrency(filters.profitRange[0])} -{" "}
+                <h4 className="text-sm mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={"/dollar.png"}
+                      className="mb-1"
+                      height={20}
+                      width={20}
+                      alt="filter-logo"
+                    />
+                    <span className="mr-2 text-[16px]">Monthly Profit</span>
+                  </div>
+                  <span className="text-[16px] text-white">
+                    {formatCurrency(filters.profitRange[0])} {"-"}
                     {formatCurrency(filters.profitRange[1])}
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className=" my-4">
                   <Slider
                     value={filters.profitRange}
                     min={0}
@@ -418,14 +480,24 @@ export default function FilterSidebar({
 
               {/* Monthly Pageviews */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Monthly Pageviews</span>
-                  <span className="text-xs text-gray-500">
+                <h4 className="text-sm mb-2 flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={"/eye.png"}
+                      className="mb-1"
+                      height={20}
+                      width={20}
+                      alt="filter-logo"
+                    />
+
+                  <span className="mr-2 text-[16px]">Monthly Pageviews</span>
+                  </div>
+                  <span className="text-[16px] text-white">
                     {formatPageviews(filters.pageviewsRange[0])} -{" "}
                     {formatPageviews(filters.pageviewsRange[1])}
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className=" my-4">
                   <Slider
                     value={filters.pageviewsRange}
                     min={0}
@@ -438,14 +510,23 @@ export default function FilterSidebar({
 
               {/* Revenue multiple */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Revenue multiple</span>
-                  <span className="text-xs text-gray-500">
+                <h4 className="text-sm mb-2 flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={"/group.png"}
+                      className="mb-1"
+                      height={20}
+                      width={20}
+                      alt="filter-logo"
+                    />
+                  <span className="mr-2 text-[16px]">Revenue multiple</span>
+                  </div>
+                  <span className="text-[16px] text-white">
                     {filters.revenueMultipleRange[0].toFixed(1)}x -{" "}
                     {filters.revenueMultipleRange[1].toFixed(1)}x
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className="my-4">
                   <Slider
                     value={filters.revenueMultipleRange}
                     min={0}
@@ -458,14 +539,23 @@ export default function FilterSidebar({
 
               {/* Profit multiple */}
               <div>
-                <h4 className="text-sm mb-2 flex items-center">
-                  <span className="mr-2">Profit multiple</span>
-                  <span className="text-xs text-gray-500">
+                <h4 className="text-sm mb-2 flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={"/group.png"}
+                      className="mb-1"
+                      height={20}
+                      width={20}
+                      alt="filter-logo"
+                    />  
+                  <span className=" text-[16px]">Profit multiple</span>
+                  </div>
+                  <span className="text-[16px] text-white">
                     {filters.profitMultipleRange[0].toFixed(1)}x -{" "}
                     {filters.profitMultipleRange[1].toFixed(1)}x
                   </span>
                 </h4>
-                <div className="px-2">
+                <div className=" my-4">
                   <Slider
                     value={filters.profitMultipleRange}
                     min={0}
@@ -481,14 +571,14 @@ export default function FilterSidebar({
           {/* Clear/Find buttons */}
           <div className="grid grid-cols-2 gap-2 mt-4">
             <Button
-              variant="outline"
-              className="border-gray-800"
+              variant="default"
+              className="border-gray-800  rounded-[16px] p-[16px] bg-[#FFFFFF1A] hover:bg-[var(--primary-button)] hover:text-black"
               onClick={onClearFilters}
             >
               Clear
             </Button>
             <Button
-              className="bg-[#c1ff00] text-black hover:bg-[#a8e600]"
+              className="bg-[#c1ff00] rounded-[16px] p-[16px]  text-black hover:bg-[#a8e600]"
               onClick={handleFindClick}
             >
               Find
@@ -496,18 +586,34 @@ export default function FilterSidebar({
           </div>
         </div>
 
+      </div>
         {/* Upgrade banner */}
-        <div className="mt-auto pt-6">
-          <div className="bg-[#c1ff00] text-black p-4 rounded-lg">
-            <h3 className="font-bold text-center mb-2">
+        <div className=" pt-6">
+          <div className="bg-[#c1ff00] w-full h-full max-w-[341px] max-h-[293px]  flex flex-col justify-center items-center item-center gap-[32px] text-black p-4 rounded-[32px]">
+            <div className="h-[70px] w-[68.6px] rounded-[42px] bg-[#0000001A] flex justify-center items-center">
+
+            <Image src={"/rocket.png"} height={35} width={35} />
+            </div>
+            <h3 className="font-bold text-center text-[25px] mb-2">
               Upgrade Your Account To Premium
             </h3>
-            <Button className="w-full bg-black text-white hover:bg-gray-800 flex items-center justify-center gap-2">
-              Let's Go <ChevronRight className="h-4 w-4" />
+            <Button className="w-full bg-black text-white flex items-center text-[16px] p-[17px] rounded-[50px] justify-center gap-2">
+              Let's Go <Image src={"/arrow-right.png"} height={20} width={20} alt="arrow-right"/>
             </Button>
           </div>
         </div>
-      </div>
+
+        
+        <Link href={"#"} className="flex h-[30px]  px-2 gap-4">
+          <Image src={"/gear.png" } height={28} width={28} alt="gear.png"/>
+          <span className="text-[20px] leading-[150%] text-[#FFFFFF99]">Settings</span>
+        </Link>
+        <Link href={"#"} className="flex h-[30px] px-2 gap-4">
+          <Image src={"/signout.png" } height={28} width={28} alt="signout.png"/>
+          <span className="text-[20px] leading-[150%] text-[#FFFFFF99]">Logout</span>
+        </Link>
+
+
     </div>
   );
 }
