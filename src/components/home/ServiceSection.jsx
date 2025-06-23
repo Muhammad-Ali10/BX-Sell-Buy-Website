@@ -196,14 +196,14 @@ export default function ServiceSection() {
                   alt="share" className="m-auto" />
               </button>
               <div className="absolute bottom-3 left-3 flex space-x-2">
-                <div className="bg-[#C5FD1F] text-black text-xs  md:!text-base font-medium font-lufga  pl-[10px] pr-[17px] py-2 rounded-full flex items-center gap-2">
+                <div className="bg-[#C5FD1F] text-black text-xs  md:!text-base font-medium font-lufga  pl-[10px] pr-[17px] backdrop-blur-[44px] py-2 rounded-full flex items-center gap-2">
                   <Image src={"/buttonicon.png"}
                     width={20}
                     height={20}
                     alt="Button-Icon"
                   /> Managed by EX
                 </div>
-                <div className="bg-gradient-to-r from-gray-500/50 via-black/100 to-gray-500/50 text-xs  md:!text-base  font-medium font-lufga px-4 py-2 text-white rounded-full">{listing.category}</div>
+                <div className="bg-gradient-to-r  from-gray-500/50 via-[#000000]/60 to-gray-500/50 text-xs backdrop-blur-[44px] md:!text-base  font-medium font-lufga px-4 py-2 text-white rounded-full">{listing.category}</div>
               </div>
             </div>
             <div className="p-4">

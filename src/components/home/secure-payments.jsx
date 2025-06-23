@@ -59,7 +59,7 @@ export default function SecurePayments() {
           <div className="space-y-6 flex flex-col gap-4">
             {Details.map((item, index) =>
               <div className="flex flex-row gap-6 items-start" key={index}>
-                <Image src={item.imageSrc} width={58} height={58} />
+                <Image src={item.imageSrc} width={58} height={58}  alt={"image"}/>
                 <div className="flex flex-col gap-3">
                   <span className="text-xl md:text-2xl font-normal font-lufga text-white">{item.title}</span>
                   <p className="text-sm md:text-[22px] font-normal font-lufga text-white/50 w-full max-w-[514px]">{item.description}</p>
@@ -81,7 +81,7 @@ export default function SecurePayments() {
                 <div className="md:p-3 bg-[#202020] max-w-[266.66px] p-2 md:max-w-[485.71px] flex flex-col gap-2 md:gap-5 justify-between items-center rounded-xl w-full">
                   <div className="flex flex-row w-full justify-between items-center">
                     <p className="text-[9.9px] md:text-lg text-white/50 font-normal font-lufga">Transfer money to</p>
-                    <p className="text-[11.32] md:text-xl font-medium text-white font-lufga">-120,000</p>
+                    <p className=" md:text-xl font-medium text-white font-lufga">-120,000</p>
                   </div>
                   <div className="flex flex-row w-full justify-between items-center">
                     <div className="flex flex-row w-full justify-start gap-0 md:gap-3 items-center">
@@ -128,7 +128,7 @@ export default function SecurePayments() {
                       </div>
 
                       <div className="flex items-center gap-3 p-3 rounded-lg">
-                        <Image src="/mony.png" width={66} height={66}  className="w-[36.78px] h-[36.78px] md:w-[66px] md:h-[66px]"/>
+                        <Image src="/mony.png" width={66} height={66} alt={"image"} className="w-[36.78px] h-[36.78px] md:w-[66px] md:h-[66px]"/>
                         <div>
                           <p className="text-[12.73px] md:text-[23.19px] font-medium font-lufga text-white">Money arrived</p>
                           <p className="text-[9.9px] md:text-lg  font-medium font-lufga text-white/50">In review</p>

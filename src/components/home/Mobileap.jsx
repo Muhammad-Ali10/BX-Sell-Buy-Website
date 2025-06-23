@@ -39,11 +39,11 @@ export default function Mobileapp() {
 
                 {/* Marketing Content */}
                 <div className="w-full max-w-3xl text-left">
-                    <h1 className="mb-8 text-[34px] font-bold lg:text-5xl 2xl:text-7xl font-normal font-lufga">Discover All Listings</h1>
+                    <h1 className="mb-8 text-[34px] font-bold lg:text-5xl 2xl:text-7xl  font-lufga">Discover All Listings</h1>
                     <div className="space-y-6">
                         {listingDetalis?.map((itemName, index) =>
                             <div className="flex items-center gap-3" key={index}>
-                                {itemName.imgSrc && <Image src={itemName?.imgSrc} width={31} height={20} />}
+                                {itemName.imgSrc && <Image src={itemName?.imgSrc} alt={`listDetails-{${index}}`} width={31} height={20} />}
                                 <p className="text-base md:text-2xl font-normal font-lufga text-white/70">{itemName.name}</p>
                             </div>)}
                     </div>
@@ -78,7 +78,7 @@ export default function Mobileapp() {
                                 alt="QR Code"
                                 width={370}
                                 height={411}
-                                className="object-contain w-[192px] h-[192px] md:w-[370px] md:h-[411px]" 
+                                className="object-contain m-auto w-[192px] h-[192px] md:w-[370px] md:h-[411px]" 
                             />
                         </div>
                     </Card>
@@ -86,12 +86,12 @@ export default function Mobileapp() {
 
 
                 <Card className="bg-[#d0ff00] p-6 md:p-8 rounded-3xl flex items-center justify-center max-w-[860px] w-full">
-                    <div className="relative w-full aspect-[250/400]  2xl:aspect-[400/500] rounded-[32px] overflow-hidden">
+                    <div className="relative w-full  aspect-[250/400]  2xl:aspect-[400/500] rounded-[32px] overflow-hidden">
                         <Image
                             src="/mobileapp.png"
                             alt="Phone Mockup"
                             fill
-                            className="object-cover rounded-[32px]"
+                            className="object-cover  rounded-[32px]"
                             priority
                         />
                     </div>

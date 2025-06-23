@@ -11,6 +11,9 @@ import FilterSidebar from "@/components/shared/filter-sidebar"
 import ListingCard from "@/components/shared/listing-card"
 import { dummyListings } from "@/lib/dummy-data"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Image from "next/image"
+import { LISTING_NAV_PATH } from "@/config/navpath"
+
 
 export default function AllListings() {
   const [filters, setFilters] = useState({
@@ -20,6 +23,7 @@ export default function AllListings() {
     priceRange: [500, 5000],
     location: "",
     targetCountry: "",
+    targetMinRevenue: 50,
     ageRange: [0, 15],
     revenueRange: [0, 2000000],
     profitRange: [0, 1500000],
@@ -74,6 +78,11 @@ export default function AllListings() {
         return false
       }
 
+      // Target country filter
+      if (filters.targetMinRevenue  < 0 && listing.targetCountry !== filters.targetCountry) {
+        return false
+      }
+
       // Business age filter
       if (listing.businessAge < filters.ageRange[0] || listing.businessAge > filters.ageRange[1]) {
         return false
@@ -120,7 +129,7 @@ export default function AllListings() {
   }, [filters])
 
   const handleFilterChange = (newFilters) => {
-    console.log("Filter changed:", newFilters)
+    // console.log("Filter changed:", newFilters)
     setFilters({ ...filters, ...newFilters })
   }
 
@@ -132,6 +141,7 @@ export default function AllListings() {
       priceRange: [500, 100000],
       location: "",
       targetCountry: "",
+      targetMinRevenue:0,
       ageRange: [0, 15],
       revenueRange: [0, 2000000],
       profitRange: [0, 1500000],
@@ -144,13 +154,13 @@ export default function AllListings() {
   return (
     <div className="flex min-h-screen bg-black text-white">
       {/* Desktop sidebar */}
-      <div className="hidden md:block w-[220px] border-r border-gray-800 overflow-y-auto">
+      <div className="hidden md:block max-w-[389px] w-full border-r border-gray-800 overflow-y-auto">
         <FilterSidebar filters={filters} onFilterChange={handleFilterChange} onClearFilters={handleClearFilters} />
       </div>
 
       <div className="flex-1 overflow-y-auto">
         {/* Header */}
-        <header className="sticky top-0 z-10 bg-black border-b border-gray-800 px-4 py-3 flex items-center justify-between">
+        <header className="sticky top-0 z-10 bg-black border-b border-gray-800 px-4 py-3 flex items-center ">
           <div className="flex items-center gap-3">
             {/* Mobile menu toggle */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -160,48 +170,20 @@ export default function AllListings() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[280px] p-0 bg-black border-gray-800">
-                <div className="p-4 border-b border-gray-800">
-                  <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl w-fit">BX</div>
-                </div>
-                <nav className="flex flex-col p-4 border-b border-gray-800">
-                  <Link
-                    href="/"
+               
+                <nav className="flex flex-col items-center p-4 border-b border-gray-800">
+                  {
+                    LISTING_NAV_PATH.map((nav) => (
+                      <Link
+                    href={nav.path}
                     className={`px-7 py-3 rounded-[30px] transition-colors ${
-                      currentPath === "/" ? "bg-[#c1ff00] text-black" : "bg-[#0d151b] text-white hover:bg-gray-900"
+                      currentPath === nav.path || currentPath.includes(nav.path) ? "bg-[#c1ff00] text-black" : "bg-[#0d151b] text-white hover:bg-gray-900"
                     }`}
                   >
-                    Home
+                    {nav.label}
                   </Link>
-                  <Link
-                    href="/listings"
-                    className={`py-3 px-2 rounded-md my-1 transition-colors ${
-                      currentPath === "/listings" || currentPath.includes("/listings")
-                        ? "bg-[#c1ff00] text-black"
-                        : "bg-black text-white hover:bg-gray-900"
-                    }`}
-                  >
-                    All Listings
-                  </Link>
-                  <Link
-                    href="/how-to-buy"
-                    className={`py-3 px-2 rounded-md my-1 transition-colors ${
-                      currentPath === "/how-to-buy"
-                        ? "bg-[#c1ff00] text-black"
-                        : "bg-black text-white hover:bg-gray-900"
-                    }`}
-                  >
-                    How To Buy
-                  </Link>
-                  <Link
-                    href="/how-to-sell"
-                    className={`py-3 px-2 rounded-md transition-colors ${
-                      currentPath === "/how-to-sell"
-                        ? "bg-[#c1ff00] text-black"
-                        : "bg-black text-white hover:bg-gray-900"
-                    }`}
-                  >
-                    How To Sell
-                  </Link>
+                    ))}
+                  
                 </nav>
                 <div className="overflow-y-auto max-h-[calc(100vh-180px)]">
                   <FilterSidebar
@@ -216,7 +198,8 @@ export default function AllListings() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl">BX</div>
+              {/* <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl">BX</div> */}
+            {/* <Image src={"/logo.png"} height={60} width={60} alt="Logo" /> */}
             </Link>
 
             {/* Desktop navigation */}
@@ -264,7 +247,7 @@ export default function AllListings() {
             </nav>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-1 justify-end  gap-3">
             <Button variant="ghost" size="icon" className="rounded-full relative">
               <Bell className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 bg-[#c1ff00] text-black text-xs w-4 h-4 flex items-center justify-center rounded-full">
@@ -319,9 +302,9 @@ export default function AllListings() {
         </header>
 
         {/* Main content */}
-        <main className="p-4 md:p-6 bg-white">
+        <main className="flex flex-col p-4 md:p-6 bg-white">
           {/* Sell your store banner */}
-          <div className="bg-[#c1ff00] text-black rounded-xl p-6 mb-6 relative overflow-hidden">
+          <div className="bg-[linear-gradient(to_right,_#C4FC1E,_#D2FF4D)] text-black rounded-xl p-6 mb-6 relative overflow-hidden">
             <div className="max-w-[70%] z-10 relative">
               <h2 className="text-xl md:text-2xl font-bold mb-2">Looking to Sell Your Shopify Store?</h2>
               <p className="text-sm md:text-base mb-4">
