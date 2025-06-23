@@ -32,7 +32,7 @@ export default function ListingCard({ listing, featured = false }) {
       return `$${amount}`
     }
   }
-console.log(listing)
+// console.log(listing)
   return (
             <div className="rounded-lg max-w-[371px] overflow-hidden">
               <div className="relative">
