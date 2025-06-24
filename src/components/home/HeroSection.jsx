@@ -22,7 +22,7 @@ export default function HeroSection() {
   return (
     <main className="bg-[url(/herobg.png)] pt-8">
       <header className="container mx-auto py-4 px-4 backdrop-blur-xs rounded-xl bg-[#1360F3]">
-        <div className="flex items-center justify-between">
+        <div className="sm:hidden md:flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2">
               <div className="0 p-2 rounded-lg">
@@ -65,7 +65,7 @@ export default function HeroSection() {
           </div>
         </div>
       </header>
-      <section className="mx-auto px-4 pt-16 text-center mt-12">
+      <section className="mx-auto px-1 md:px-4 pt-16 text-center mt-12">
         <h1 className="text-[40px] md:!text-[85px] font-lufga font-medium text-white mb-4">
           Buy & Sell Companies
           <br />
@@ -92,12 +92,12 @@ export default function HeroSection() {
         </div>
 
         <div className="bg-blue-500/50 p-2 rounded-lg max-w-4xl mx-auto mb-12 px-6 md:px-12 py-6">
-          <div className="flex flex-row gap-2">
-            <Select className="text-white !h-10 ">
-              <SelectTrigger className="w-full max-w-2xl bg-blue-400/30 border-none text-white md:h-16 sm:h-10 ">
-                <div className="flex items-center gap-2 text-white text-base font-lufga font-normal h-10 md:h-16">
+          <div className="flex flex-row items-center gap-2">
+            <Select className="text-white md:!h-10 ">
+              <SelectTrigger className="w-full  bg-blue-400/30 border-none text-white md:h-16 sm:h-10 ">
+                <div className="flex items-center gap-2 text-white text-base font-lufga font-normal md:h-16">
                   <Layers className="text-white" />
-                  <SelectValue placeholder="What are you Looking For?" className="text-base font-lufga font-normal" />
+                  <SelectValue placeholder="What are you Looking For?" className="text-sm font-lufga font-normal" />
                 </div>
               </SelectTrigger>
               <SelectContent className=" text-base font-lufga font-normal ">
@@ -106,7 +106,7 @@ export default function HeroSection() {
                 <SelectItem value="content">Content</SelectItem>
               </SelectContent>
             </Select>
-            <Button className="bg-[#FAFAFA0D] hover:bg-[var(--primary-button)] border-[1px] border-[#FFFFFF1A] text-white hover:text-black w-10 h-10  md:w-16 md:h-16">
+            <Button className="bg-[#FAFAFA0D] hover:bg-[var(--primary-button)] border-[1px] border-[#FFFFFF1A] text-white hover:text-black w-10 sm:h-10  md:w-16 md:h-16">
               <SlidersHorizontal className="h-5 w-5" />
             </Button>
             <Button className="bg-[var(--primary-button)] hover:bg-[var(--primary-button)]  text-black  w-10 h-10  md:w-16 md:h-16">

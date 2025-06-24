@@ -59,26 +59,37 @@ export default function OTPVerification() {
         <Image src="/Registerimage.png" alt="Professional woman" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col justify-end z-10 px-12 py-16">
-          <div className="max-w-md bg-black/30 p-8 rounded-lg backdrop-blur-sm mb-16">
-            <p className="text-2xl font-medium text-white mb-6">
+          <div className="max-w-[788px] max-h-[364px] bg-[#FFFFFF26] rounded-[32px] p-8  backdrop-blur-[54px]  mb-16">
+            <p className="md:text-[32px] leading-[120%] font-medium text-white mb-6">
               "Find the perfect deal securely and effortlessly. Connect with the right buyers and sellers today—fast,
               safe, and seamless!"
             </p>
-            <h3 className="text-xl font-medium text-white mb-1">Verified by Industry Experts</h3>
-            <p className="text-white mb-3">Trusted by users worldwide</p>
+
+            <div className="flex justify-between items-center">
+
+            <div>
+            <h3 className="text-[32px] font-medium leading-[150%] text-white mb-1">Verified by Industry Experts</h3>
+            <p className=" md:text-[18px] text-[#FFFFFFB2] mb-3">Trusted by users worldwide</p>
+           
+
             <div className="flex mb-8">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-6 w-6 text-white fill-white" />
               ))}
             </div>
-            <div className="flex">
-              <button className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-2">
-                <ChevronLeft className="h-6 w-6 text-white" />
+
+            </div>
+            
+            <div className="flex ">
+              <button className="w-[68px] h-[68px] group hover:bg-[white] rounded-full transition-all bg-white/20 flex items-center justify-center mr-2">
+                <ChevronLeft className="h-6 w-6 text-white group-hover:text-black" />
               </button>
-              <button className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <ChevronRight className="h-6 w-6 text-white" />
+              <button className="w-[68px] h-[68px] group rounded-full hover:bg-[white] transition-all bg-white/20 flex items-center justify-center">
+                <ChevronRight className="h-6 w-6 text-white group-hover:text-black" />
               </button>
             </div>
+            </div>
+
           </div>
         </div>
       </div>

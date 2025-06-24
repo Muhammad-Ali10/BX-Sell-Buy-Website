@@ -34,7 +34,7 @@ export default function ListingCard({ listing, featured = false }) {
   }
 // console.log(listing)
   return (
-            <div className="rounded-lg max-w-[371px] overflow-hidden">
+            <div className="rounded-lg max-w-[371px]  bg-[#FAFAFA] overflow-hidden">
               <div className="relative">
                 <Image
                   src={listing.image}

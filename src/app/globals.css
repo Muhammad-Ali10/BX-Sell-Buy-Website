@@ -6,6 +6,12 @@
 }
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-sm: 130px;
+  --breakpoint-md: 640px;
+  
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

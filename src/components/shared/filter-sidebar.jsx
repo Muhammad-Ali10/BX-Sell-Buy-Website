@@ -114,7 +114,7 @@ export default function FilterSidebar({
   };
 
   return (
-    <div className="p-4 h-full flex flex-col md:min-w-[23.3125em] gap-[58px] w-full">
+    <div className="p-4 h-full flex flex-col sm:min-w-[384px] md:min-w-[23.3125em] gap-[58px] w-full">
       {!mobile && (
         <div className="flex items-center mb-4">
           {/* <div className="bg-[#c1ff00] text-black font-bold p-1.5 rounded text-xl">BX</div> */}
@@ -123,7 +123,7 @@ export default function FilterSidebar({
       )}
 
       <div className="bg-[#18181A] p-[24px] rounded-[16px] ">
-        <h3 className="font-medium mb-4 leading-[150%]">Filter Options</h3>
+        <h3 className="font-medium mb-4 text-white leading-[150%]">Filter Options</h3>
 
         <div className="space-y-6 flex-1 overflow-y-auto">
           {/* Search */}
@@ -140,7 +140,7 @@ export default function FilterSidebar({
 
           {/* Niche */}
           <div>
-            <h4 className="text-sm mb-2  text-[16px] leading-[150%]">Niche</h4>
+            <h4 className="text-sm mb-2  text-white text-[16px] leading-[150%]">Niche</h4>
             <div className="p-[16px] pl-[20px] bg-[#FFFFFF0D] rounded-[16px] mb-4">
               <Select value={filters.niche} onValueChange={handleNicheChange}>
                 <SelectTrigger className="  outline-none border-none !text-white !h-10 w-full">
@@ -167,7 +167,7 @@ export default function FilterSidebar({
 
           {/* Revenue generating */}
           <div>
-            <h4 className="text-sm mb-2 text-[16px] leading-[150%]">
+            <h4 className="text-sm mb-2 text-white text-[16px] leading-[150%]">
               Revenue generating
             </h4>
             <div className="grid grid-cols-2 gap-2">
@@ -179,7 +179,7 @@ export default function FilterSidebar({
                   filters.revenueGenerating === true
                     ? "bg-[#c1ff00]  text-black p-[16px] hover:bg-[#a8e600]"
                     : "border-gray-800 border-none outline-none bg-[#FFFFFF0D]",
-                  "gap-[10px] md:h-[56px] md:w-[141.5px] rounded-[16px]"
+                  "gap-[10px] text-white md:h-[56px] md:w-[141.5px] rounded-[16px]"
                 )}
                 onClick={() => handleRevenueGeneratingChange("yes")}
               >
@@ -193,7 +193,7 @@ export default function FilterSidebar({
                   filters.revenueGenerating === false
                     ? "bg-[#c1ff00] text-black hover:bg-[#a8e600]"
                     : "border-gray-800 bg-[#FFFFFF0D] border-none outline-none",
-                  "gap-[10px] md:h-[56px] md:w-[141.5px] rounded-[16px]"
+                  "gap-[10px] text-white md:h-[56px] md:w-[141.5px] rounded-[16px]"
                 )}
                 onClick={() => handleRevenueGeneratingChange("no")}
               >
@@ -205,7 +205,7 @@ export default function FilterSidebar({
           {/* Price */}
           <div className="bg-[#242425] rounded-[16px] p-[12px]">
             <h4 className="text-sm mb-2 flex gap-[16px] flex-col ">
-              <span className="mr-2   text-[18px] h-[27px] leading-[150%]">
+              <span className="mr-2 text-white   text-[18px] h-[27px] leading-[150%]">
                 Price
               </span>
               <span className="text-[14px] leading-[150%] flex justify-between  text-white">
@@ -240,7 +240,7 @@ export default function FilterSidebar({
 
           {/* Business Location */}
           <div>
-            <h4 className="mb-2 text-[16px] leading-[150%]">
+            <h4 className="mb-2 text-white text-[16px] leading-[150%]">
               Business Location
             </h4>
             <div className="bg-[#FFFFFF0D] p-[16px] rounded-[16px]">
@@ -303,9 +303,9 @@ export default function FilterSidebar({
           {/* Advanced Filter */}
           <Collapsible open={isAdvancedOpen} onOpenChange={setIsAdvancedOpen}>
             <CollapsibleTrigger className="flex items-center justify-between w-full !text-[20px] font-[600]">
-              <span className=" leading-[140%]">Advanced Filter</span>
+              <span className="text-white leading-[140%]">Advanced Filter</span>
               <svg
-                className={`h-4 w-4 transition-transform ${
+                className={`h-4 w-4 text-white transition-transform ${
                   isAdvancedOpen ? "transform rotate-180" : ""
                 }`}
                 fill="none"
@@ -325,10 +325,10 @@ export default function FilterSidebar({
               {/* Target Country */}
               <div className="bg-[#FFFFFF0D] p-[16px] rounded-[12px]">
                 <div className="flex justify-between leading-[150%] ">
-                  <h4 className="text-[16px] mb-2 leading-[150%]">
+                  <h4 className="text-[16px] text-white mb-2 leading-[150%]">
                     Target Country
                   </h4>
-                  <span className="text-[16px] leading-[150%]">
+                  <span className="text-[16px] text-white leading-[150%]">
                     min.{filters.targetMinRevenue}%
                   </span>
                 </div>
@@ -404,7 +404,7 @@ export default function FilterSidebar({
               {/* Age */}
               <div>
                 <h4 className="text-sm mb-2 flex justify-between items-center">
-                  <span className="mr-2 text-[16px]">Age</span>
+                  <span className="mr-2 text-[16px] text-white">Age</span>
                   <span className="text-[16px] text-white">
                     {filters.ageRange[0]}y-{filters.ageRange[1]}y
                   </span>
@@ -431,7 +431,7 @@ export default function FilterSidebar({
                       width={20}
                       alt="filter-logo"
                     />
-                    <span className="mr-2 text-[16px]">Monthly Revenue</span>
+                    <span className="mr-2 text-[16px] text-white">Monthly Revenue</span>
                   </div>
                   <span className="text-[16px] text-white">
                     {formatCurrency(filters.revenueRange[0])} -{" "}
@@ -460,7 +460,7 @@ export default function FilterSidebar({
                       width={20}
                       alt="filter-logo"
                     />
-                    <span className="mr-2 text-[16px]">Monthly Profit</span>
+                    <span className="mr-2 text-[16px] text-white">Monthly Profit</span>
                   </div>
                   <span className="text-[16px] text-white">
                     {formatCurrency(filters.profitRange[0])} {"-"}
@@ -490,7 +490,7 @@ export default function FilterSidebar({
                       alt="filter-logo"
                     />
 
-                  <span className="mr-2 text-[16px]">Monthly Pageviews</span>
+                  <span className="mr-2 text-[16px] text-white">Monthly Pageviews</span>
                   </div>
                   <span className="text-[16px] text-white">
                     {formatPageviews(filters.pageviewsRange[0])} -{" "}
@@ -519,7 +519,7 @@ export default function FilterSidebar({
                       width={20}
                       alt="filter-logo"
                     />
-                  <span className="mr-2 text-[16px]">Revenue multiple</span>
+                  <span className="mr-2 text-[16px] text-white">Revenue multiple</span>
                   </div>
                   <span className="text-[16px] text-white">
                     {filters.revenueMultipleRange[0].toFixed(1)}x -{" "}
@@ -548,7 +548,7 @@ export default function FilterSidebar({
                       width={20}
                       alt="filter-logo"
                     />  
-                  <span className=" text-[16px]">Profit multiple</span>
+                  <span className=" text-[16px] text-white">Profit multiple</span>
                   </div>
                   <span className="text-[16px] text-white">
                     {filters.profitMultipleRange[0].toFixed(1)}x -{" "}
@@ -592,7 +592,7 @@ export default function FilterSidebar({
           <div className="bg-[#c1ff00] w-full h-full max-w-[341px] max-h-[293px]  flex flex-col justify-center items-center item-center gap-[32px] text-black p-4 rounded-[32px]">
             <div className="h-[70px] w-[68.6px] rounded-[42px] bg-[#0000001A] flex justify-center items-center">
 
-            <Image src={"/rocket.png"} height={35} width={35} />
+            <Image src={"/rocket.png"} height={35} width={35} alt="rocket.png"/>
             </div>
             <h3 className="font-bold text-center text-[25px] mb-2">
               Upgrade Your Account To Premium
