@@ -189,7 +189,7 @@ export default function AllListings() {
   };
 
   return (
-    <div className="flex min-h-screen sm:max-w-[430px] md:max-w-[1721px] w-full bg-black text-white">
+    <div className="flex min-h-screen sm:max-w-[430px] md:max-w-[1920px] w-full bg-black text-white">
       {/* Desktop sidebar */}
       <div className="hidden md:block max-w-[389px] w-full border-r border-gray-800 overflow-y-auto">
         <FilterSidebar
@@ -381,7 +381,8 @@ export default function AllListings() {
               </Button>
             </div>
 
-            {/* Box & Stars MD */}
+<div className=" block">
+  {/* Box & Stars MD */}
             <Image
               src={"/Star 1.png"}
               className="absolute sm:hidden md:block top-[54px] left-[900px] "
@@ -418,6 +419,8 @@ export default function AllListings() {
               width={107}
               alt="surprise.png"
             />
+</div>
+          
 
             {/* Box & Star SM */}
              <Image
@@ -465,7 +468,7 @@ export default function AllListings() {
               width={53.24}
               alt="surprise.png"
             />
-            <div className="relative flex  right-4 top-1/2 -translate-y-1/2"></div>
+            
           </div>
 
           {/* Premium banner */}
