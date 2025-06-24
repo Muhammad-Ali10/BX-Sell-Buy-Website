@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+       screens: {
+        sm: '300px', // changes `sm:` to apply at 500px instead of default 640px
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

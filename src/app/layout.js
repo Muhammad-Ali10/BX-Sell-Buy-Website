@@ -1,6 +1,6 @@
 import { Sora } from 'next/font/google';
 import './globals.css';
-
+import "swiper/css";
 const sora = Sora({
   subsets: ['latin'],
   variable: '--font-sora',
